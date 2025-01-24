@@ -6,6 +6,7 @@
 [node name="Node2D" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_a8ix1")]
+scale = Vector2(1, 1)
 
 [node name="Mob" parent="." instance=ExtResource("2_a8yn4")]
 position = Vector2(50, 50)

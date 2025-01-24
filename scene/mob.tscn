@@ -71,7 +71,7 @@ position = Vector2(1, -6)
 scale = Vector2(1.00221, 1.01216)
 sprite_frames = SubResource("SpriteFrames_g3bh2")
 animation = &"mobAnim"
-frame_progress = 0.30428
+frame_progress = 0.214001
 speed_scale = 2.0
 
 [node name="mobCollisionBox" type="CollisionShape2D" parent="mobBody"]

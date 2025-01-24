@@ -8,6 +8,7 @@ public partial class Mob : Node2D
 
 	private Vector2 screensize;
 	private Node2D personnage;
+	private AnimatedSprite2D _animatedSprite;
 	
 	
 	// Called when the node enters the scene tree for the first time.
@@ -15,11 +16,14 @@ public partial class Mob : Node2D
 	{
 		screensize = GetViewportRect().Size;
 		personnage = GetNode<Node2D>("../Player");	
+		_animatedSprite = GetNode<AnimatedSprite2D>("mobBody/AnimatedSprite2D");
 		
 		if (personnage == null)
-		{
-			GD.Print("Warning: Player character node not found!");
-		}
+			GD.Print("WARNING: Mob.cs -> player n'as pas pu être trouvé!");
+		if (_animatedSprite == null)
+			GD.Print("WARNING: Mob.cs -> mob.cs -> l'animation n'as pas pu être trouvée!");
+
+		
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -29,12 +33,15 @@ public partial class Mob : Node2D
 		Vector2 mobPosition = GlobalPosition;
 		Vector2 velocity = Vector2.Zero;
 
-		if (playerPosition.X > mobPosition.X)
+		if (playerPosition.X > mobPosition.X){
 			velocity.X += 1; // Le joueur est à droite
+			_animatedSprite.FlipH = false;
+		}
 			
-		else if (playerPosition.X < mobPosition.X)
+		else if (playerPosition.X < mobPosition.X){
 			velocity.X -=1; // Le joueur est à gauche
-			
+			_animatedSprite.FlipH = true;
+			}
 
 		if (playerPosition.Y > mobPosition.Y)
 			velocity.Y += 1; // Le joueur est en bas
@@ -48,7 +55,11 @@ public partial class Mob : Node2D
 		if (velocity.Length() > 0)
 		{
 			velocity = velocity.Normalized() * speed;
+			_animatedSprite.Play();
 		}
+		else
+			_animatedSprite.Stop();
+		
 
 		// Mettre à jour la position du personnage
 		Position += velocity * (float)delta;

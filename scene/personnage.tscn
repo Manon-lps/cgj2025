@@ -60,7 +60,6 @@ height = 32.0
 [node name="Personnage" type="Node2D"]
 scale = Vector2(5, 5)
 script = ExtResource("1_e758l")
-speed = 500
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
 
