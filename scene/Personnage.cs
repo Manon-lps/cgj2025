@@ -4,7 +4,7 @@ using System;
 public partial class Personnage : Node2D
 {
 	[Export]
-	public int speed {get; set;} = 100;
+	public int speed {get; set;} = 500;
 
 	private Vector2 screensize;
 	

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c3n3eylw25uuy"
-path="res://.godot/imported/tilemap.png-87dab6e3fe8d9bea7e84c4f5eb648974.ctex"
+uid="uid://bgclbf384hk6l"
+path="res://.godot/imported/emptybookshelves1.png-4653806055ceebce21a37646654175f4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Tilemap Bundle/tilemap.png"
-dest_files=["res://.godot/imported/tilemap.png-87dab6e3fe8d9bea7e84c4f5eb648974.ctex"]
+source_file="res://assets/Tilemap Bundle/emptybookshelves1.png"
+dest_files=["res://.godot/imported/emptybookshelves1.png-4653806055ceebce21a37646654175f4.ctex"]
 
 [params]
 
@@ -25,7 +25,7 @@ mipmaps/generate=false
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
-process/fix_alpha_border=false
+process/fix_alpha_border=true
 process/premult_alpha=false
 process/normal_map_invert_y=false
 process/hdr_as_srgb=false
