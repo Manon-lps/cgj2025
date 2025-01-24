@@ -5,15 +5,15 @@ public partial class Personnage : Node2D
 {
 	[Export]
 	public int speed {get; set;} = 500;
-
-	private Vector2 screensize;
+	
+	private CharacterBody2D _characterBody;
 	
 	private AnimatedSprite2D _animatedSprite;
 	
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		screensize = GetViewportRect().Size;
+		_characterBody = GetNode<CharacterBody2D>("CharacterBody2D");
 		_animatedSprite = GetNode<AnimatedSprite2D>("CharacterBody2D/AnimatedSprite2D");
 	}
 
@@ -53,13 +53,8 @@ public partial class Personnage : Node2D
 			_animatedSprite.Stop();
 		}
 
-		// Mettre à jour la position du personnage
-		Position += velocity * (float)delta;
-
-		// Garder le personnage dans les limites de l'écran
-		Position = new Vector2(
-			Mathf.Clamp(Position.X, 0, screensize.X),
-			Mathf.Clamp(Position.Y, 0, screensize.Y)
-		);
+		// Appliquer le déplacement avec MoveAndSlide
+		_characterBody.Velocity = velocity; // Velocity est une propriété du CharacterBody2D
+		_characterBody.MoveAndSlide(); // MoveAndSlide prend en compte les collisions
 	}
 }

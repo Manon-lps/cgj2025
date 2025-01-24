@@ -55,21 +55,24 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_q15yv"]
-height = 32.0
+radius = 9.33333
+height = 20.0
 
 [node name="Personnage" type="Node2D"]
-scale = Vector2(5, 5)
+z_index = 1
+z_as_relative = false
+scale = Vector2(3, 3)
 script = ExtResource("1_e758l")
-speed = 500
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+collision_mask = 3
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_e2xkh")
 animation = &"walk"
-frame_progress = 0.836847
+frame_progress = 0.78909
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
-position = Vector2(0, 3)
+position = Vector2(0, 7)
 shape = SubResource("CapsuleShape2D_q15yv")
