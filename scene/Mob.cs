@@ -14,8 +14,8 @@ public partial class Mob : Node2D
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
+		personnage = GetParent().GetNodeOrNull<Node2D>("Player");	
 		screensize = GetViewportRect().Size;
-		personnage = GetNode<Node2D>("../Player");	
 		_animatedSprite = GetNode<AnimatedSprite2D>("mobBody/AnimatedSprite2D");
 		
 		if (personnage == null)
@@ -29,9 +29,12 @@ public partial class Mob : Node2D
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{		
-		Vector2 playerPosition = personnage.GlobalPosition;
+		
+		Vector2 playerPosition = personnage.GetNodeOrNull<CharacterBody2D>("CharacterBody2D").GlobalPosition;
 		Vector2 mobPosition = GlobalPosition;
 		Vector2 velocity = Vector2.Zero;
+		
+		//GD.Print("position joueur trouvée:"+playerPosition.ToString());
 
 		if (playerPosition.X > mobPosition.X){
 			velocity.X += 1; // Le joueur est à droite

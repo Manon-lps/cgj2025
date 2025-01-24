@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://cvrr6r5lfirwl"]
+
+[ext_resource type="PackedScene" uid="uid://5v8u1q655wh" path="res://scene/personnage.tscn" id="1_aablg"]
+[ext_resource type="PackedScene" uid="uid://bgw1p4ppgyw3i" path="res://scene/mob.tscn" id="2_7nlg4"]
+[ext_resource type="PackedScene" uid="uid://ca20dykd2t6xc" path="res://scene/bossRoom.tscn" id="3_naapt"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_aablg")]
+position = Vector2(736, 272)
+scale = Vector2(5, 5)
+
+[node name="Mob" parent="." instance=ExtResource("2_7nlg4")]
+z_index = 1
+position = Vector2(488, 240)
+scale = Vector2(3, 3)
+
+[node name="bossRoom" parent="." instance=ExtResource("3_naapt")]

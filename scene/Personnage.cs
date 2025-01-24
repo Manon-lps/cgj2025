@@ -16,10 +16,11 @@ public partial class Personnage : Node2D
 		_characterBody = GetNode<CharacterBody2D>("CharacterBody2D");
 		_animatedSprite = GetNode<AnimatedSprite2D>("CharacterBody2D/AnimatedSprite2D");
 	}
-
+	
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
+		//GD.Print("position perso:"+_characterBody.GlobalPosition);
 		Vector2 velocity = Vector2.Zero;
 
 		// Gérer les entrées utilisateur
