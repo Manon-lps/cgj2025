@@ -15,6 +15,7 @@ public partial class Personnage : Node2D
 	{
 		_characterBody = GetNode<CharacterBody2D>("CharacterBody2D");
 		_animatedSprite = GetNode<AnimatedSprite2D>("CharacterBody2D/AnimatedSprite2D");
+		_animatedSprite.Animation = "walkBoss";
 	}
 	
 	// Called every frame. 'delta' is the elapsed time since the previous frame.

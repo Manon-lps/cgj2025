@@ -1,7 +1,13 @@
-[gd_scene load_steps=11 format=3 uid="uid://5v8u1q655wh"]
+[gd_scene load_steps=17 format=3 uid="uid://5v8u1q655wh"]
 
 [ext_resource type="Script" path="res://scene/Personnage.cs" id="1_e758l"]
 [ext_resource type="Texture2D" uid="uid://bjd88f6d8bjrd" path="res://assets/tiny heroes/1 Pink_Monster/Pink_Monster_Walk_6.png" id="1_nulek"]
+[ext_resource type="Texture2D" uid="uid://sefc6naaslpf" path="res://assets/beethoven/BeethovenW1.png" id="3_gbdw4"]
+[ext_resource type="Texture2D" uid="uid://b6kc67ivnvfyp" path="res://assets/beethoven/BeethovenW2.png" id="4_ivttj"]
+[ext_resource type="Texture2D" uid="uid://xa6gatfbe5xo" path="res://assets/beethoven/BeethovenW3.png" id="5_n2fux"]
+[ext_resource type="Texture2D" uid="uid://bg5jdu3o4jy3t" path="res://assets/beethoven/BeethovenW4.png" id="6_tkhbg"]
+[ext_resource type="Texture2D" uid="uid://rkgk2y7oh2rw" path="res://assets/beethoven/BeethovenW5.png" id="7_c1gjj"]
+[ext_resource type="Texture2D" uid="uid://bl7fck2svu7yp" path="res://assets/beethoven/BeethovenW6.png" id="8_d6g2d"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dm0ur"]
 atlas = ExtResource("1_nulek")
@@ -52,6 +58,29 @@ animations = [{
 "loop": true,
 "name": &"walk",
 "speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_gbdw4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_ivttj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_n2fux")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_tkhbg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_c1gjj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_d6g2d")
+}],
+"loop": true,
+"name": &"walkBoss",
+"speed": 5.0
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_q15yv"]
@@ -70,9 +99,11 @@ collision_mask = 3
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
 texture_filter = 1
+scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_e2xkh")
-animation = &"walk"
-frame_progress = 0.78909
+animation = &"walkBoss"
+frame = 4
+frame_progress = 0.3417
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
 position = Vector2(-0.666667, 9.33333)
