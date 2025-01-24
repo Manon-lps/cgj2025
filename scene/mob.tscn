@@ -1,0 +1,80 @@
+[gd_scene load_steps=11 format=3 uid="uid://bgw1p4ppgyw3i"]
+
+[ext_resource type="Script" path="res://scene/Mob.cs" id="1_pkyqp"]
+[ext_resource type="Texture2D" uid="uid://dd5jyai31c816" path="res://assets/tiny heroes/2 Owlet_Monster/Owlet_Monster_Walk_6.png" id="2_0xjw7"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0xdl8"]
+atlas = ExtResource("2_0xjw7")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0krim"]
+atlas = ExtResource("2_0xjw7")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sqb1x"]
+atlas = ExtResource("2_0xjw7")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lxfdm"]
+atlas = ExtResource("2_0xjw7")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qnrbc"]
+atlas = ExtResource("2_0xjw7")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ktflx"]
+atlas = ExtResource("2_0xjw7")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_g3bh2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0xdl8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0krim")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sqb1x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lxfdm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qnrbc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ktflx")
+}],
+"loop": true,
+"name": &"mobAnim",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rl6rj"]
+radius = 9.58855
+height = 26.0
+
+[node name="Mob" type="Node2D"]
+script = ExtResource("1_pkyqp")
+
+[node name="mobBody" type="CharacterBody2D" parent="."]
+collision_layer = 2
+collision_priority = 2.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="mobBody"]
+texture_filter = 1
+texture_repeat = 1
+position = Vector2(1, -6)
+scale = Vector2(1.00221, 1.01216)
+sprite_frames = SubResource("SpriteFrames_g3bh2")
+animation = &"mobAnim"
+frame_progress = 0.30428
+speed_scale = 2.0
+
+[node name="mobCollisionBox" type="CollisionShape2D" parent="mobBody"]
+position = Vector2(0, -2)
+scale = Vector2(1.1472, 1)
+shape = SubResource("CapsuleShape2D_rl6rj")
