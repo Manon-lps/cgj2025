@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bgw1p4ppgyw3i"]
+[gd_scene load_steps=13 format=3 uid="uid://bgw1p4ppgyw3i"]
 
 [ext_resource type="Script" path="res://scene/Mob.cs" id="1_pkyqp"]
 [ext_resource type="Texture2D" uid="uid://dd5jyai31c816" path="res://assets/tiny heroes/2 Owlet_Monster/Owlet_Monster_Walk_6.png" id="2_0xjw7"]
@@ -57,14 +57,26 @@ animations = [{
 radius = 1.74338
 height = 12.0
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dlj3a"]
+radius = 3.0
+height = 16.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wrkhy"]
+radius = 5.0
+height = 16.0
+
 [node name="Mob" type="Node2D"]
+y_sort_enabled = true
 script = ExtResource("1_pkyqp")
 
 [node name="mobBody" type="CharacterBody2D" parent="."]
+z_as_relative = false
 collision_layer = 2
+collision_mask = 129
 collision_priority = 2.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="mobBody"]
+z_as_relative = false
 texture_filter = 1
 texture_repeat = 1
 position = Vector2(1, -6)
@@ -75,7 +87,28 @@ frame_progress = 0.214001
 speed_scale = 2.0
 
 [node name="mobCollisionBox" type="CollisionShape2D" parent="mobBody"]
+z_as_relative = false
 position = Vector2(0, 8)
 rotation = 1.5708
 scale = Vector2(1.1472, 1)
 shape = SubResource("CapsuleShape2D_rl6rj")
+
+[node name="attack_hitbox" type="Area2D" parent="mobBody"]
+z_as_relative = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="mobBody/attack_hitbox"]
+z_as_relative = false
+position = Vector2(0, 8)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_dlj3a")
+debug_color = Color(0.945098, 0, 0, 0.419608)
+
+[node name="damage_hitbox" type="Area2D" parent="mobBody"]
+z_as_relative = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="mobBody/damage_hitbox"]
+z_as_relative = false
+position = Vector2(0, 6)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_wrkhy")
+debug_color = Color(3.53761e-06, 0.590748, 0.0921569, 0.419608)

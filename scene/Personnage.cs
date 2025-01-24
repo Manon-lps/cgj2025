@@ -6,6 +6,12 @@ public partial class Personnage : Node2D
 	[Export]
 	public int speed {get; set;} = 500;
 	
+	[Export]
+	public int health_point {get; set;} = 100;
+	
+	[Export]
+	public int damage {get; set;} = 25;
+	
 	private CharacterBody2D _characterBody;
 	
 	private AnimatedSprite2D _animatedSprite;
@@ -43,7 +49,9 @@ public partial class Personnage : Node2D
 		{
 			velocity.Y -= 1;
 		}
-
+		
+		_characterBody.ZIndex = (int) velocity.Y;
+		
 		// Normaliser la vitesse pour éviter d'aller plus vite en diagonale
 		if (velocity.Length() > 0)
 		{

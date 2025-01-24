@@ -9,6 +9,7 @@ public partial class Mob : Node2D
 	private Vector2 screensize;
 	private Node2D personnage;
 	private AnimatedSprite2D _animatedSprite;
+	private CharacterBody2D _characterBody;
 	
 	
 	// Called when the node enters the scene tree for the first time.
@@ -17,6 +18,7 @@ public partial class Mob : Node2D
 		personnage = GetParent().GetNodeOrNull<Node2D>("Player");	
 		screensize = GetViewportRect().Size;
 		_animatedSprite = GetNode<AnimatedSprite2D>("mobBody/AnimatedSprite2D");
+		_characterBody = GetNode<CharacterBody2D>("mobBody");
 		
 		if (personnage == null)
 			GD.Print("WARNING: Mob.cs -> player n'as pas pu être trouvé!");
@@ -52,7 +54,7 @@ public partial class Mob : Node2D
 		else if (playerPosition.Y < mobPosition.Y)
 			velocity.Y -=1; // Le joueur est en haut
 			
-
+		_characterBody.ZIndex = (int) velocity.Y;
 
 		// Normaliser la vitesse pour éviter d'aller plus vite en diagonale
 		if (velocity.Length() > 0)

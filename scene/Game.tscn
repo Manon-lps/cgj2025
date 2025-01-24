@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://ca20dykd2t6xc" path="res://scene/bossRoom.tscn" id="3_naapt"]
 
 [node name="Node2D" type="Node2D"]
+y_sort_enabled = true
 
 [node name="Player" parent="." instance=ExtResource("1_aablg")]
 position = Vector2(736, 272)
