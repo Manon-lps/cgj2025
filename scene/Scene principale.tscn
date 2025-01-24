@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://b1gnbe7262g6b"]
+
+[ext_resource type="PackedScene" uid="uid://5v8u1q655wh" path="res://scene/personnage.tscn" id="1_a8ix1"]
+[ext_resource type="PackedScene" uid="uid://bgw1p4ppgyw3i" path="res://scene/mob.tscn" id="2_a8yn4"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_a8ix1")]
+scale = Vector2(1, 1)
+
+[node name="Mob" parent="." instance=ExtResource("2_a8yn4")]
+position = Vector2(50, 50)
+scale = Vector2(0.947583, 1.18661)
