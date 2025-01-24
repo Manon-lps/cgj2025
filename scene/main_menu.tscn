@@ -1,0 +1,126 @@
+[gd_scene load_steps=11 format=3 uid="uid://b1njttu3yw31g"]
+
+[ext_resource type="Texture2D" uid="uid://bytbwfh3f4xbt" path="res://assets/UI assets/Border/panel-border-031.png" id="1_c06p4"]
+[ext_resource type="Texture2D" uid="uid://638g88n5aayn" path="res://assets/UI assets/Panel/panel-031.png" id="2_rdd6i"]
+[ext_resource type="FontFile" uid="uid://cjkv7megeg4pm" path="res://assets/UI assets/GrapeSoda.ttf" id="3_pltag"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0xjbw"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_neyd8"]
+texture = ExtResource("1_c06p4")
+texture_margin_left = 16.0
+texture_margin_top = 16.0
+texture_margin_right = 16.0
+texture_margin_bottom = 16.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_o1g3o"]
+texture = ExtResource("1_c06p4")
+texture_margin_left = 16.0
+texture_margin_top = 16.0
+texture_margin_right = 16.0
+texture_margin_bottom = 16.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_quli7"]
+texture = ExtResource("2_rdd6i")
+texture_margin_left = 16.0
+texture_margin_top = 16.0
+texture_margin_right = 16.0
+texture_margin_bottom = 16.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ntfjt"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_w8wwf"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dxtva"]
+
+[node name="main_menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_0xjbw")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -185.0
+offset_top = -87.0
+offset_right = 185.0
+offset_bottom = 169.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 17
+
+[node name="Button" type="Button" parent="VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+theme_override_styles/focus = SubResource("StyleBoxTexture_neyd8")
+theme_override_styles/hover = SubResource("StyleBoxTexture_o1g3o")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_quli7")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_ntfjt")
+text = "Start game"
+
+[node name="Button2" type="Button" parent="VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+theme_override_styles/focus = SubResource("StyleBoxTexture_neyd8")
+theme_override_styles/hover = SubResource("StyleBoxTexture_neyd8")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_quli7")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_w8wwf")
+text = "Settings"
+
+[node name="Button3" type="Button" parent="VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+theme_override_styles/focus = SubResource("StyleBoxTexture_neyd8")
+theme_override_styles/hover = SubResource("StyleBoxTexture_neyd8")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_quli7")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_dxtva")
+text = "Exit"
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -69.5
+offset_top = -246.0
+offset_right = 69.5
+offset_bottom = -223.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.47451)
+theme_override_constants/shadow_offset_x = 8
+theme_override_constants/shadow_offset_y = 6
+theme_override_fonts/font = ExtResource("3_pltag")
+theme_override_font_sizes/font_size = 87
+text = "Symphony of Eras"
