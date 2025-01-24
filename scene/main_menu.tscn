@@ -1,19 +1,31 @@
-[gd_scene load_steps=15 format=3 uid="uid://b1njttu3yw31g"]
+[gd_scene load_steps=19 format=3 uid="uid://b1njttu3yw31g"]
 
+[ext_resource type="Texture2D" uid="uid://fni746t21cn7" path="res://assets/UI assets/frame_000.png" id="1_7jmsn"]
 [ext_resource type="Texture2D" uid="uid://clmd6jq2qs580" path="res://assets/UI assets/frame_001.png" id="1_88ehx"]
 [ext_resource type="Texture2D" uid="uid://bytbwfh3f4xbt" path="res://assets/UI assets/Border/panel-border-031.png" id="1_c06p4"]
 [ext_resource type="Texture2D" uid="uid://dcmqxk4onk4c1" path="res://assets/UI assets/frame_003.png" id="2_0vki2"]
 [ext_resource type="Texture2D" uid="uid://638g88n5aayn" path="res://assets/UI assets/Panel/panel-031.png" id="2_rdd6i"]
 [ext_resource type="Texture2D" uid="uid://dgb08xlnkp2s5" path="res://assets/UI assets/frame_007.png" id="3_8fwjo"]
+[ext_resource type="Texture2D" uid="uid://cif32cxpt627c" path="res://assets/UI assets/frame_002.png" id="3_lipa5"]
 [ext_resource type="FontFile" uid="uid://cjkv7megeg4pm" path="res://assets/UI assets/GrapeSoda.ttf" id="3_pltag"]
+[ext_resource type="Texture2D" uid="uid://8tgkbuk5spuk" path="res://assets/UI assets/frame_004.png" id="5_332t1"]
+[ext_resource type="Texture2D" uid="uid://dg62rb8cbhd8p" path="res://assets/UI assets/frame_006.png" id="6_2jqc3"]
 
 [sub_resource type="AnimatedTexture" id="AnimatedTexture_4qb1a"]
-frames = 3
-frame_0/texture = ExtResource("1_88ehx")
-frame_1/texture = ExtResource("2_0vki2")
+frames = 7
+frame_0/texture = ExtResource("1_7jmsn")
+frame_1/texture = ExtResource("1_88ehx")
 frame_1/duration = 1.0
-frame_2/texture = ExtResource("3_8fwjo")
+frame_2/texture = ExtResource("3_lipa5")
 frame_2/duration = 1.0
+frame_3/texture = ExtResource("2_0vki2")
+frame_3/duration = 1.0
+frame_4/texture = ExtResource("5_332t1")
+frame_4/duration = 1.0
+frame_5/texture = ExtResource("6_2jqc3")
+frame_5/duration = 1.0
+frame_6/texture = ExtResource("3_8fwjo")
+frame_6/duration = 1.0
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0xjbw"]
 texture = SubResource("AnimatedTexture_4qb1a")
