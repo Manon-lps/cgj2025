@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://b1njttu3yw31g"]
+[gd_scene load_steps=20 format=3 uid="uid://b1njttu3yw31g"]
 
 [ext_resource type="Texture2D" uid="uid://fni746t21cn7" path="res://assets/UI assets/frame_000.png" id="1_7jmsn"]
 [ext_resource type="Texture2D" uid="uid://clmd6jq2qs580" path="res://assets/UI assets/frame_001.png" id="1_88ehx"]
@@ -10,6 +10,7 @@
 [ext_resource type="FontFile" uid="uid://cjkv7megeg4pm" path="res://assets/UI assets/GrapeSoda.ttf" id="3_pltag"]
 [ext_resource type="Texture2D" uid="uid://8tgkbuk5spuk" path="res://assets/UI assets/frame_004.png" id="5_332t1"]
 [ext_resource type="Texture2D" uid="uid://dg62rb8cbhd8p" path="res://assets/UI assets/frame_006.png" id="6_2jqc3"]
+[ext_resource type="Script" path="res://scene/BoutonPlay.cs" id="10_8ign1"]
 
 [sub_resource type="AnimatedTexture" id="AnimatedTexture_4qb1a"]
 frames = 7
@@ -104,6 +105,7 @@ theme_override_styles/hover = SubResource("StyleBoxTexture_o1g3o")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_quli7")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_ntfjt")
 text = "Start game"
+script = ExtResource("10_8ign1")
 
 [node name="Button2" type="Button" parent="VBoxContainer"]
 texture_filter = 1
