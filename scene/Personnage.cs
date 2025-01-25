@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Collections.Generic;
 
 public partial class Personnage : Node2D
 {
@@ -16,12 +17,22 @@ public partial class Personnage : Node2D
 	
 	private AnimatedSprite2D _animatedSprite;
 	
+	private List<Node> enemies = new List<Node>();
+	
+	private bool canAttack = true;
+	private float attackCooldown = 1f; // Temps en secondes
+	
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
 		_characterBody = GetNode<CharacterBody2D>("CharacterBody2D");
 		_animatedSprite = GetNode<AnimatedSprite2D>("CharacterBody2D/AnimatedSprite2D");
 		_animatedSprite.Animation = "walkBoss";
+		
+		//Gestion des combats
+		Area2D area_attack = _characterBody.GetNode<Area2D>("attack_hitbox");
+		area_attack.AreaEntered += EnnemyWithinRange;
+		area_attack.AreaExited += EnnemyQuitRange;
 	}
 	
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -49,6 +60,12 @@ public partial class Personnage : Node2D
 		{
 			velocity.Y -= 1;
 		}
+
+		if (Input.IsActionJustPressed("attack"))
+		{
+			GD.Print("Joueur attaque !");
+			PerformAttack();
+		}
 		
 		_characterBody.ZIndex = (int) velocity.Y;
 		
@@ -66,5 +83,88 @@ public partial class Personnage : Node2D
 		// Appliquer le déplacement avec MoveAndSlide
 		_characterBody.Velocity = velocity; // Velocity est une propriété du CharacterBody2D
 		_characterBody.MoveAndSlide(); // MoveAndSlide prend en compte les collisions
+	}
+
+	public void TakeDamage(int damage)
+	{
+		//recevoir une attaque
+		GD.Print("Le joueur se fait attaquer.");
+		health_point = health_point - damage;
+		GD.Print("Hp restants : " + health_point);
+		if (health_point <= 0)
+		{
+			Died();
+		}
+	}
+
+	public void EnnemyWithinRange(Node body)
+	{
+		GD.Print("EnnemyWithinRange");
+		if (body is Area2D hitbox)
+		{
+			Node node = hitbox.GetParent().GetParent();
+			if (node is Mob mob)
+			{
+				enemies.Add(mob);
+			}
+			else
+			{
+				GD.Print("C'est pas un mob, bizarre !?");
+			}
+				
+		}
+		else
+		{
+			GD.Print("Ya un problème chef !");
+		}
+	}
+
+	private void EnnemyQuitRange(Node body)
+	{
+		GD.Print("EnnemyQuitRange");
+		if (body is Area2D hitbox)
+		{
+			Node node = hitbox.GetParent().GetParent();
+			if (node is Mob mob)
+			{
+				enemies.Add(mob);
+			}
+			else
+			{
+				GD.Print("C'est pas un mob, bizarre !?");
+			}
+		}
+		else
+		{
+			GD.Print("Ya un problème chef !");
+		}
+	}
+
+	private void Died()
+	{
+		//jouer une animation de mort
+		GD.Print("Le joueur est mort !");
+		QueueFree();
+		// renvoyer au menu
+	}
+	
+	private async void PerformAttack()
+	{
+		if (!canAttack) return;
+		canAttack = false;
+		foreach (var enemy in enemies)
+		{
+			if (enemy is Mob mob)
+			{
+				mob.TakeDamage(damage);
+			}
+			else
+			{
+				GD.Print("C'est pas un mob, bizarre !");
+			}
+		}
+		// Attendre avant de pouvoir attaquer à nouveau
+		await ToSignal(GetTree().CreateTimer(attackCooldown), "timeout");
+		canAttack = true;
 	}
 }
