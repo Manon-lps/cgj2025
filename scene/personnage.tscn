@@ -1,10 +1,14 @@
-[gd_scene load_steps=19 format=3 uid="uid://5v8u1q655wh"]
+[gd_scene load_steps=21 format=3 uid="uid://5v8u1q655wh"]
 
 [ext_resource type="Script" path="res://scene/Personnage.cs" id="1_e758l"]
 [ext_resource type="Texture2D" uid="uid://bjd88f6d8bjrd" path="res://assets/tiny heroes/1 Pink_Monster/Pink_Monster_Walk_6.png" id="1_nulek"]
+[ext_resource type="Texture2D" uid="uid://yq1hyro20lvk" path="res://assets/personnage/attaque1.png" id="2_thav5"]
 [ext_resource type="Texture2D" uid="uid://sefc6naaslpf" path="res://assets/beethoven/BeethovenW1.png" id="3_gbdw4"]
+[ext_resource type="Texture2D" uid="uid://ca3whr4cv8prl" path="res://assets/personnage/attaque2.png" id="3_ikj5u"]
+[ext_resource type="Texture2D" uid="uid://bcqh7xrsoioch" path="res://assets/personnage/attaque3.png" id="4_18dr7"]
 [ext_resource type="Texture2D" uid="uid://b6kc67ivnvfyp" path="res://assets/beethoven/BeethovenW2.png" id="4_ivttj"]
 [ext_resource type="Texture2D" uid="uid://xa6gatfbe5xo" path="res://assets/beethoven/BeethovenW3.png" id="5_n2fux"]
+[ext_resource type="Texture2D" uid="uid://2p5ylfrk0jf1" path="res://assets/personnage/attaque4.png" id="5_wklq1"]
 [ext_resource type="Texture2D" uid="uid://bg5jdu3o4jy3t" path="res://assets/beethoven/BeethovenW4.png" id="6_tkhbg"]
 [ext_resource type="Texture2D" uid="uid://rkgk2y7oh2rw" path="res://assets/beethoven/BeethovenW5.png" id="7_c1gjj"]
 [ext_resource type="Texture2D" uid="uid://bl7fck2svu7yp" path="res://assets/beethoven/BeethovenW6.png" id="8_d6g2d"]
@@ -36,6 +40,23 @@ region = Rect2(160, 0, 32, 32)
 [sub_resource type="SpriteFrames" id="SpriteFrames_e2xkh"]
 resource_local_to_scene = true
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_thav5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_ikj5u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_18dr7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_wklq1")
+}],
+"loop": true,
+"name": &"attaqueSaxo",
+"speed": 6.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_dm0ur")
@@ -84,65 +105,27 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_q15yv"]
-radius = 2.0
-height = 16.6667
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_upvde"]
-radius = 3.33334
+radius = 4.66667
 height = 9.33333
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0k1fd"]
-radius = 6.33333
-height = 23.3333
 
 [node name="Personnage" type="Node2D"]
 z_index = 1
-y_sort_enabled = true
+z_as_relative = false
 position = Vector2(0, -1)
 scale = Vector2(3, 3)
 script = ExtResource("1_e758l")
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
-z_as_relative = false
-collision_layer = 2
-collision_mask = 133
+collision_mask = 3
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
-z_as_relative = false
 texture_filter = 1
+position = Vector2(81.3333, 45.6667)
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_e2xkh")
-animation = &"walkBoss"
-frame = 5
-frame_progress = 0.469302
+animation = &"attaqueSaxo"
+frame_progress = 0.782878
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
-visibility_layer = 130
-z_as_relative = false
-position = Vector2(-2.30926e-14, 10.6667)
-rotation = 1.5708
+position = Vector2(-0.666667, 9.33333)
 shape = SubResource("CapsuleShape2D_q15yv")
-
-[node name="damage_hitbox" type="Area2D" parent="CharacterBody2D"]
-z_as_relative = false
-collision_layer = 8
-collision_mask = 64
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/damage_hitbox"]
-z_as_relative = false
-position = Vector2(3.87838e-14, 9.33333)
-rotation = 1.5708
-shape = SubResource("CapsuleShape2D_upvde")
-debug_color = Color(0.0431373, 0.596078, 0, 0.419608)
-
-[node name="attack_hitbox" type="Area2D" parent="CharacterBody2D"]
-z_as_relative = false
-collision_layer = 32
-collision_mask = 16
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/attack_hitbox"]
-z_as_relative = false
-position = Vector2(3.87838e-14, 11)
-rotation = 1.5708
-shape = SubResource("CapsuleShape2D_0k1fd")
-debug_color = Color(0.968627, 0, 0, 0.419608)
